@@ -1,0 +1,329 @@
+;===============================================
+;            POLYBAR CONFIGURATION
+;===============================================
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;===============================================
+
+
+[colors]
+
+background = #cc222222
+background-alt = #cc666666
+background-opaque = #222222
+foreground = #dfdfdf
+foreground-alt = #ffffff 
+foreground-disconnect = #66ffffff
+
+primary = #3182bd 
+secondary = #de935f
+alert = #bd2c40
+
+
+; colors for indicators for RAM and CPU
+best = #55aa55
+good = #557755
+nominal = #f5a70a
+degraded = #ff5555
+empty = #444444
+
+spotify = #6AE368
+
+
+;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;      P A R E N T  -  B A R
+;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[bar/parent]
+;contains configuration that is used by top and bottom bar
+
+;${env:MONITOR} to display polybar on all monitors
+monitor = ${env:MONITOR}
+
+font-0 = "Droid Sans Mono:pixelsize=10;2"
+font-1 = "fixed:pixelsize=10;2"
+font-2 = "FontAwesome:pixelsize=10;2"
+
+module-margin-left = 3
+module-margin-right = 3
+
+;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;      B O T T O M  -  B A R
+;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[bar/bottomBar]
+;bottom bar contains CPU, RAM, disk indicators and tray
+;the bar is located in the bottom right
+inherit = bar/parent
+
+width = 100%
+height = 20
+offset-x = 0
+offset-y = 0
+background = ${colors.background}
+foreground = ${colors.foreground}
+bottom = true
+
+padding-right = 5
+
+modules-left = vpncheck pkg
+modules-center = 
+modules-right = cpu memory freespace
+
+; tray options
+tray-position = right
+tray-padding = 2
+
+;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;         T O P  -  B A R
+;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[bar/topBar]
+;top bar contains workspace view, spotify, network, volume, battery, date, time and keyboard-layout
+;the bar uses the screen width
+inherit = bar/parent
+
+width = 100%
+height = 20
+offset-x = 0
+offset-y = 0
+background = ${colors.background}
+foreground = ${colors.foreground}
+bottom = false
+
+modules-left = i3 spotify
+modules-center = arcanist 
+modules-right = wired-network wireless-network battery volume date xkeyboard
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[settings]
+screenchange-reload = true
+
+  
+;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;          M O D U L E S
+;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+; KEYBOARD LAYOUT
+[module/xkeyboard]
+type = internal/xkeyboard
+label-layout = %layout%
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.background}
+
+
+; DISK SPACE
+[module/freespace]
+type = internal/fs
+interval = 25
+mount-0 = /
+format-prefix = " "
+label-mounted =  %free%
+label-unmounted-foreground = ${colors.foreground-disconnect}
+
+; i3wm
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label-mode-padding = 1
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+label-focused = %index%
+label-focused-background = ${colors.primary}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 1
+
+label-unfocused = %index%
+label-unfocused-padding = 1
+
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+
+; NETWORK
+[module/wired-network]
+type = internal/network
+interface = enp0s31f6
+label-connected =  %local_ip%
+label-connected-foreground = ${colors.foreground}
+label-disconnected = 
+;: 
+label-disconnected-foreground = ${colors.foreground-disconnect} 
+
+; WIRELESS
+[module/wireless-network]
+type = internal/network
+interface = wlp1s0
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected = %essid%   %signal%%
+label-connected-foreground = ${colors.foreground}
+
+label-disconnected = 
+;: 
+label-disconnected-foreground = ${colors.foreground-disconnect} 
+
+; CPU
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <label><ramp-coreload>
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.foreground}
+label = 
+
+ramp-coreload-font = 1
+ramp-coreload-0 = ▁
+ramp-coreload-0-foreground = ${colors.best}
+ramp-coreload-1 = ▂
+ramp-coreload-1-foreground = ${colors.best} 
+ramp-coreload-2 = ▃
+ramp-coreload-2-foreground = ${colors.good}
+ramp-coreload-3 = ▄
+ramp-coreload-3-foreground = ${colors.good}
+ramp-coreload-4 = ▅
+ramp-coreload-4-foreground = ${colors.nominal}
+ramp-coreload-5 = ▆
+ramp-coreload-5-foreground = ${colors.nominal}
+ramp-coreload-6 = ▇
+ramp-coreload-6-foreground = ${colors.degraded}
+ramp-coreload-7 = █
+ramp-coreload-7-foreground = ${colors.degraded}
+
+; MEMORY
+[module/memory]
+type = internal/memory
+interval = 2
+label = RAM
+
+format = <label> <bar-used>
+format-prefix-foreground = ${colors.foreground}
+; Only applies if <bar-used> is used
+bar-used-indicator =
+bar-used-width = 15
+bar-used-foreground-0 = ${colors.best}
+bar-used-foreground-1 = ${colors.good}
+bar-used-foreground-2 = ${colors.nominal}
+bar-used-foreground-3 = ${colors.degraded}
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = ${colors.empty}
+
+
+; DATE TIME
+[module/date]
+type = internal/date
+interval = 1
+
+date = %A, %d.%m.%y
+date-alt = ${self.date}
+
+time = %H:%M
+time-alt = ${self.time}
+
+label =  %time%    %date%
+
+; VOLUME
+[module/volume]
+type = internal/volume
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage:3:3%%
+label-volume-foreground = ${root.foreground}
+
+format-muted = <label-muted>
+label-muted = muted
+label-muted-foreground = ${colors.degraded}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+
+; BATTERY
+[module/battery]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+battery = BAT0
+adapter = ADP1
+poll-interval = 5
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+; Only applies if <animation-charging> is used
+animation-charging-0 = 
+animation-charging-1 =  
+animation-charging-2 =  
+animation-charging-3 =  
+animation-charging-4 = 
+; Framerate in milliseconds
+animation-charging-framerate = 750
+
+; SPOTIFY
+[module/spotify]
+type = custom/script
+format-foreground = ${colors.spotify}
+exec = ~/.config/polybar/spotify.sh ' %artist% - %title%' 30
+tail = true
+interval = 2
+
+; MAIL
+[module/mail]
+type = custom/script
+interval = 60
+format = <label>
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground}
+
+; OPENVPN
+[module/vpncheck]
+type = custom/script
+exec = pgrep openvpn
+interval = 5
+label = vpn connected
+format-prefix = " "
+format-prefix-foreground = ${colors.good}
+
+; ARCH PKG
+[module/pkg]
+type = custom/script
+interval = 600
+format = <label>
+label = "%output:0:30%"
+exec = ~/.config/polybar/pkg.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+
+; ARCANIST
+[module/arcanist]
+type = custom/script
+interval = 30
+format-prefix = " "
+exec = ~/.config/polybar/arcanist.sh
+
+; BRIGHTNESS
+[module/brightness]
+type = custom/script
+interval = 5
+exec = ~/.config/polybar/brightness.py

@@ -1,0 +1,10 @@
+#touchpad configuration -> xorg.conf.d not working
+synclient TapButton1=1
+synclient TapButton2=3
+synclient TapButton3=2
+synclient PalmDetect=1
+synclient VertTwoFingerScroll=1
+synclient HorizTwoFingerScroll=1
+synclient TapAndDragGesture=1
+synclient LockedDrags=1
+synclient LockedDragTimeout=10000

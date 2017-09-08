@@ -1,0 +1,9 @@
+#!/bin/bash
+#credentials for phabricator
+PHAB_USERNAME=koch_p
+PHAB_EMAIL=koch@prime-research.com
+git config --replace-all --global credential.helper store #stores password
+git config --replace-all --global http.sslVerify false
+git config --replace-all --global core.editor vim
+git config --replace-all --global user.name $PHAB_USERNAME
+git config --replace-all --global user.email $PHAB_EMAIL

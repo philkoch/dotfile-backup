@@ -1,0 +1,48 @@
+!urxvt config
+URxvt.saveLines: 1000
+URxvt.scrollBar: false
+URxvt.foreground: white
+URxvt.background: black
+URxvt.secondaryScroll: true
+URxvt.font: xft:Droid Sans Mono:pixelsize=13
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: vivaldi
+URxvt.matcher.button: 1
+URxvt.tabbed.saveLines: 1000
+URxvt.tabbed.scrollBar: false
+URxvt.tabbed.tabbar-fg: 3
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 0
+URxvt.tabbed.tab-bg: 1
+URxvt.tabbed.secondaryScroll: true
+URxvt.tabbed.font: xft:Droid Sans Mono:pixelsize=13
+URxvt.depth: 24
+!transparency
+URxvt.transparent: true
+!higher number = more visible of background
+URxvt.shading: 40
+
+
+!smaller cursor
+Xcursor.size: 16
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #1d1f21, #81a2be, #1d1f21
+rofi.color-normal: #373b41, #969896, #282a2e, #969896, #373b41
+rofi.color-active: #373b41, #de935f, #282a2e, #de935f, #373b41
+rofi.color-urgent: #373b41, #cc6666, #282a2e, #cc6666, #373b41
+
+! ------------------------------------------------------------------------------
+! PRETTY FONTS
+! ------------------------------------------------------------------------------
+
+Xft.autohint: 0
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
