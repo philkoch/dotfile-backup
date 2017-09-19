@@ -2,7 +2,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-#vim keybindings
+#emacs keybindings
 bindkey -e
 #make delete key stop printing ~
 bindkey    "^[[3~"          delete-char

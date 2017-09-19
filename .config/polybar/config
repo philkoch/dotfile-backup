@@ -41,12 +41,12 @@ spotify = #6AE368
 ;${env:MONITOR} to display polybar on all monitors
 monitor = ${env:MONITOR}
 
-font-0 = "Droid Sans Mono:pixelsize=10;2"
+font-0 = "Input Mono:style=Bold:pixelsize=10;2"
 font-1 = "fixed:pixelsize=10;2"
 font-2 = "FontAwesome:pixelsize=10;2"
 
-module-margin-left = 3
-module-margin-right = 3
+module-margin-left = 1
+module-margin-right = 2
 
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;      B O T T O M  -  B A R
@@ -67,7 +67,7 @@ bottom = true
 padding-right = 5
 
 modules-left = vpncheck pkg
-modules-center = 
+modules-center =arcanist  
 modules-right = cpu memory freespace
 
 ; tray options
@@ -91,7 +91,7 @@ foreground = ${colors.foreground}
 bottom = false
 
 modules-left = i3 spotify
-modules-center = arcanist 
+modules-center = time 
 modules-right = wired-network wireless-network battery volume date xkeyboard
 
 scroll-up = i3wm-wsnext
@@ -129,28 +129,37 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
+strip-wsnumbers = true
+#pin-workspaces = true
 
 label-mode-padding = 1
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
-label-focused = %index%
+label-focused = %icon%
 label-focused-background = ${colors.primary}
 label-focused-underline = ${colors.primary}
 label-focused-padding = 1
 
-label-unfocused = %index%
+label-unfocused = %icon%
 label-unfocused-padding = 1
 
-label-urgent = %index%
+label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
-label-visible = %index%
+label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-default = 
 
 ; NETWORK
 [module/wired-network]
@@ -222,10 +231,10 @@ bar-used-empty = ▐
 bar-used-empty-foreground = ${colors.empty}
 
 
-; DATE TIME
-[module/date]
+; TIME
+[module/time]
 type = internal/date
-interval = 1
+interval = 30
 
 date = %A, %d.%m.%y
 date-alt = ${self.date}
@@ -233,7 +242,21 @@ date-alt = ${self.date}
 time = %H:%M
 time-alt = ${self.time}
 
-label =  %time%    %date%
+label = %time%
+
+; DATE
+[module/date]
+type = internal/date
+interval = 30
+
+date = %a, %d.%m.%y
+date-alt = ${self.date}
+
+time = %H:%M
+time-alt = ${self.time}
+
+label = %date%
+
 
 ; VOLUME
 [module/volume]
