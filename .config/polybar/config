@@ -10,15 +10,16 @@
 
 [colors]
 
-background = #cc222222
-background-alt = #cc666666
+background = #052004 
+background-alt = #cc6666
 background-opaque = #222222
-foreground = #dfdfdf
+#foreground = #dfdfdf
+foreground = #6AE368
 foreground-alt = #ffffff 
 foreground-disconnect = #66ffffff
 
-primary = #3182bd 
-secondary = #de935f
+primary = #558B2F 
+secondary = #33691E
 alert = #bd2c40
 
 
@@ -64,11 +65,11 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 bottom = true
 
-padding-right = 5
+padding-right = 1
 
 modules-left = vpncheck pkg
 modules-center =arcanist  
-modules-right = cpu memory freespace
+modules-right = cpu memory freespace redshift
 
 ; tray options
 tray-position = right
@@ -350,3 +351,10 @@ exec = ~/.config/polybar/arcanist.sh
 type = custom/script
 interval = 5
 exec = ~/.config/polybar/brightness.py
+
+; REDSHIFT
+[module/redshift]
+type = custom/script
+interval = 5
+
+exec = ~/.config/polybar/redshift.sh

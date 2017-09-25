@@ -7,7 +7,7 @@ autorandr --change
 #increase standby time of monitors <standby><suspend><off> in seconds
 xset dpms 1800 2400 3000
 # increase typematic delay and rate
-xset r rate 200 25
+xset r rate 200 40
 #set keyboard alt-space toggle between us and de
 setxkbmap -model pc104 -layout us,de -option grp:alt_space_toggle
 
