@@ -20,13 +20,9 @@ zstyle :compinstall filename '/home/phil/.zshrc'
 
 # End of lines added by compinstall
 
-# Base16 Shell
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
 # SSH-Agent
 if ! pgrep -u $USER ssh-agent > /dev/null; then
-	ssh-agent > ~/.ssh-agent-pid
+	ssh-agent | sed '$d' > ~/.ssh-agent-pid
 fi
 if [[ "$SSH_AGENT_PID" == "" ]]; then
 	eval $(<~/.ssh-agent-pid)

@@ -167,8 +167,10 @@ bindsym Print exec $HOME/scripts/system/volume.sh down
 bindsym Pause exec $HOME/scripts/system/volume.sh mute
 
 # brightness control (mod + F11 or mod + F12)
-bindcode $mod+95 exec xbacklight - 10
-bindcode $mod+96 exec xbacklight + 10
+#bindcode $mod+95 exec xbacklight - 10
+#bindcode $mod+96 exec xbacklight + 10
+bindcode $mod+95 exec $HOME/Development/rust/brightness/target/debug/brightness down
+bindcode $mod+96 exec $HOME/Development/rust/brightness/target/debug/brightness up
 
 # i3lock computer (mod + Delete)
 #bindcode $mod+119 exec i3lock -c 000000
@@ -189,9 +191,11 @@ exec --no-startup-id "devmon --no-gui"
 #polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #wallpaper
-#exec --no-startup-id "feh --bg-center $HOME/Pictures/wallpapers/darth_vader_2560x1440.jpg"
+exec --no-startup-id "feh --bg-max ~/private/lnxpcs/cards/black/root-card-black.png"
 #dunst notifications
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
+#compton
+exec --no-startup-id compton
 
 #start applications on specific workspaces
 assign [class="Vivaldi-stable"] 2
@@ -203,3 +207,9 @@ assign [class="Keepassx2"] 4
 #vivaldi settings
 for_window [class="Vivaldi-stable" title="Startup Settings"] floating enable
 
+
+#gaps-config
+#for_window [class="^.*"] border pixel 0
+smart_gaps on
+gaps inner 8
+gaps outer 5
