@@ -120,19 +120,11 @@ if [ -f /home/phil/.phab_conf ]; then
 fi
 
 #configure synaptics touchpad
-if [ -f /home/phil/.synaptics_conf ]; then
-    source /home/phil/.synaptics_conf
-fi
+#if [ -f /home/phil/.synaptics_conf ]; then
+#    source /home/phil/.synaptics_conf
+#fi
 
 #disable Ctrl+s Ctrl+q Software Flow Control for vim
 stty -ixon
 
-#set editor variables for sudo use
-EDITOR=vim
-VISUAL=$EDITOR
-export EDITOR VISUAL
-
-#ruby gem installation not systemwide
-export GEM_HOME=$(ruby -e 'print Gem.user_dir')
-export PATH="$PATH:/home/phil/.gem/ruby/2.4.0/bin"
 

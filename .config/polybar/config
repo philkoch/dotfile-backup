@@ -155,7 +155,7 @@ label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ws-icon-0 = 1;
-ws-icon-1 = 2;
+ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
 ws-icon-4 = 5;
@@ -303,7 +303,7 @@ animation-charging-2 = 
 animation-charging-3 =  
 animation-charging-4 = 
 ; Framerate in milliseconds
-animation-charging-framerate = 750
+animation-charging-framerate = 1000
 
 ; SPOTIFY
 [module/spotify]

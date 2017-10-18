@@ -28,6 +28,8 @@ filetype indent plugin on
  
 " Enable syntax highlighting
 syntax on
+set background=dark
+colorscheme PaperColor
  
  
 "------------------------------------------------------------
@@ -150,6 +152,11 @@ set expandtab
 "set shiftwidth=4
 "set tabstop=4
  
+" persistent undo
+if has('persistent_undo')      "check if your vim version supports it
+  set undofile                 "turn on the feature  
+  set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
+endif     
  
 "------------------------------------------------------------
 " Mappings {{{1
