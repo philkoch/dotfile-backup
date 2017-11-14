@@ -20,7 +20,7 @@ if [[ "$ARC_RESP" =~ *"$EXCPTN_MSG"* ]]; then
     exit 1
 fi
 if [ "$ARC_RESP" == "$NO_TRACK_MSG" ]; then
-    OUTPUT=" -- "
+    OUTPUT=""
 
 else
     TASKS="${ARC_RESP//'Status        Tracked Name'}"

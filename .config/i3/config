@@ -200,6 +200,7 @@ exec --no-startup-id compton
 #start applications on specific workspaces
 assign [class="Vivaldi-stable"] 2
 assign [class="Firefox"] 2
+assign [class="Nightly"] 2
 assign [class="Pidgin"] 6
 assign [class="jetbrains-idea"] 3
 assign [class="Keepassx2"] 4

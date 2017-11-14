@@ -7,6 +7,9 @@ bindkey -e
 #make delete key stop printing ~
 bindkey    "^[[3~"          delete-char
 bindkey    "^[3;5~"         delete-char
+#move words with arrows
+bindkey ';5C' forward-word
+bindkey ';5D' backward-word
 
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -118,11 +121,6 @@ fi
 if [ -f /home/phil/.phab_conf ]; then
     source /home/phil/.phab_conf
 fi
-
-#configure synaptics touchpad
-#if [ -f /home/phil/.synaptics_conf ]; then
-#    source /home/phil/.synaptics_conf
-#fi
 
 #disable Ctrl+s Ctrl+q Software Flow Control for vim
 stty -ixon

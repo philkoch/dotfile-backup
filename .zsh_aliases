@@ -24,3 +24,4 @@ alias pacoptimize='pacman-optimize'
 #removes old packages from pacmans cache, keeps the latest
 alias pacclean='paccache --remove --keep 1 --verbose'
 alias battery="upower -i `upower -e | grep 'BAT'`"
+alias off='systemctl poweroff'
