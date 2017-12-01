@@ -210,5 +210,6 @@ assign [class="Keepassx2"] 4
 for_window [class="Vivaldi-stable" title="Startup Settings"] floating enable
 for_window [class="Vivaldi-stable" title="Calendar"] floating enable
 #firefox settings
-for_window [class="Firefox" title="Library"] floating enable
+for_window [class="Nightly" title="Library"] floating enable
+for_window [class="Nightly" title="Applications - Nightly"] floating enable
 
