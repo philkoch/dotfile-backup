@@ -183,7 +183,7 @@ focus_follows_mouse no
 hide_edge_borders smart
 
 #change colors
-client.focused   #33691E #33691E #76FF03 #33691E #33691E
+client.focused   #0c0c0d #0c0c0d #FFAB40 #0c0c0d #0c0c0d
 
 ####start applications:
 #USB mounting

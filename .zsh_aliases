@@ -25,3 +25,4 @@ alias pacoptimize='pacman-optimize'
 alias pacclean='paccache --remove --keep 1 --verbose'
 alias battery="upower -i `upower -e | grep 'BAT'`"
 alias off='systemctl poweroff'
+alias timestamp='date +%s%3N'

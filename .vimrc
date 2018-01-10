@@ -82,10 +82,6 @@ set hlsearch
 " which are considered to add usability. Which, if any, of these options to
 " use is very much a personal preference, but they are harmless.
  
-" Use case insensitive search, except when using capital letters
-set ignorecase
-set smartcase
- 
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
  
@@ -196,8 +192,18 @@ imap <right> <nop>
 
 " improve search, search is case-insenstivie except for when it contains
 " upper-case letters
-set incsearch
-set ignorecase
-set smartcase
+set incsearch                           
+set ignorecase                          " case-insensitive search
+set smartcase                           "
 " \q removes search highlights
 nmap \q :nohlsearch<CR>
+
+set cursorcolumn                        " highlight cursor column
+set cursorline                          " highlight cursor row
+
+match ErrorMsg '\%>120v.\+'             " Highlight lines that are too long
+match ErrorMsg '\s\+$'                  " Highlight trailing whitespaces
+
+set ssop-=options                       " do not store global and local values in a session
+set ssop-=folds                         " do not store folds
+

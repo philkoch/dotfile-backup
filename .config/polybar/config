@@ -10,18 +10,17 @@
 
 [colors]
 
-background = #052004 
+background = #2a2a2e
 background-alt = #cc6666
 background-opaque = #222222
 #foreground = #dfdfdf
-foreground = #6AE368
-foreground-alt = #ffffff 
+foreground = #FFAB40
+foreground-alt = #455A64
 foreground-disconnect = #66ffffff
 
-primary = #558B2F 
+primary = #ff9400
 secondary = #33691E
 alert = #bd2c40
-
 
 ; colors for indicators for RAM and CPU
 best = #55aa55
@@ -68,7 +67,7 @@ bottom = true
 padding-right = 1
 
 modules-left = vpncheck pkg
-modules-center =arcanist  
+modules-center =
 modules-right = cpu memory freespace redshift
 
 ; tray options
@@ -92,8 +91,8 @@ foreground = ${colors.foreground}
 bottom = false
 
 modules-left = i3 spotify
-modules-center = time 
-modules-right = wired-network wireless-network battery volume date xkeyboard
+modules-center = time
+modules-right = wired-network wireless-network battery xbacklight volume date xkeyboard
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -101,7 +100,6 @@ scroll-down = i3wm-wsprev
 [settings]
 screenchange-reload = true
 
-  
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;          M O D U L E S
 ;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -135,11 +133,11 @@ strip-wsnumbers = true
 
 label-mode-padding = 1
 label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+label-mode-background = ${colors.foreground-alt}
 
 label-focused = %icon%
-label-focused-background = ${colors.primary}
-label-focused-underline = ${colors.primary}
+label-focused-background = ${colors.foreground-alt}
+label-focused-underline = ${colors.foreground-alt}
 label-focused-padding = 1
 
 label-unfocused = %icon%
@@ -158,7 +156,7 @@ ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
-ws-icon-4 = 5;
+ws-icon-4 = 5;
 ws-icon-5 = 6;
 ws-icon-default = 
 
@@ -170,7 +168,7 @@ label-connected =  %local_ip%
 label-connected-foreground = ${colors.foreground}
 label-disconnected = 
 ;: 
-label-disconnected-foreground = ${colors.foreground-disconnect} 
+label-disconnected-foreground = ${colors.foreground-disconnect}
 
 ; WIRELESS
 [module/wireless-network]
@@ -183,7 +181,7 @@ label-connected-foreground = ${colors.foreground}
 
 label-disconnected = 
 ;: 
-label-disconnected-foreground = ${colors.foreground-disconnect} 
+label-disconnected-foreground = ${colors.foreground-disconnect}
 
 ; CPU
 [module/cpu]
@@ -260,19 +258,69 @@ label = %date%
 
 
 ; VOLUME
+;[module/volume]
+;type = internal/volume
+;format-volume = <ramp-volume> <label-volume>
+;label-volume = %percentage:3:3%%
+;label-volume-foreground = ${root.foreground}
+;
+;format-muted = <label-muted>
+;label-muted = muted
+;label-muted-foreground = ${colors.degraded}
+;
+;ramp-volume-0 = 
+;ramp-volume-1 = 
+;ramp-volume-2 = 
+
 [module/volume]
 type = internal/volume
-format-volume = <ramp-volume> <label-volume>
-label-volume = %percentage:3:3%%
+
+format-volume = <label-volume> <bar-volume>
+label-volume = 
 label-volume-foreground = ${root.foreground}
 
-format-muted = <label-muted>
-label-muted = muted
-label-muted-foreground = ${colors.degraded}
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = 
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
 
 
 ; BATTERY
@@ -298,9 +346,9 @@ ramp-capacity-4 = 
 
 ; Only applies if <animation-charging> is used
 animation-charging-0 = 
-animation-charging-1 =  
-animation-charging-2 =  
-animation-charging-3 =  
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
 animation-charging-4 = 
 ; Framerate in milliseconds
 animation-charging-framerate = 1000
@@ -347,10 +395,10 @@ format-prefix = " "
 exec = ~/.config/polybar/arcanist.sh
 
 ; BRIGHTNESS
-[module/brightness]
-type = custom/script
-interval = 5
-exec = ~/.config/polybar/brightness.py
+;[module/brightness]
+;type = custom/script
+;interval = 5
+;exec = ~/.config/polybar/brightness.py
 
 ; REDSHIFT
 [module/redshift]
