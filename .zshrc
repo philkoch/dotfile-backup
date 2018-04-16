@@ -41,10 +41,10 @@ prompt pure
 ##
 autoload -U compinit
 compinit
-zmodload -i zsh/complist        
+zmodload -i zsh/complist
 setopt hash_list_all            # hash everything before completion
 setopt completealiases          # complete alisases
-setopt always_to_end            # when completing from the middle of a word, move the cursor to the end of the word    
+setopt always_to_end            # when completing from the middle of a word, move the cursor to the end of the word
 setopt complete_in_word         # allow completion from within a word/phrase
 setopt correct                  # spelling correction for commands
 setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
@@ -77,14 +77,14 @@ zstyle ':completion:*' users $users
 # History
 ##
 HISTFILE=~/.zsh_history         # where to store zsh config
-HISTSIZE=1024                   # big history
-SAVEHIST=1024                   # big history
+HISTSIZE=4096                   # big history
+SAVEHIST=4096                   # big history
 setopt append_history           # append
 setopt hist_ignore_all_dups     # no duplicate
 unsetopt hist_ignore_space      # ignore space prefixed commands
 setopt hist_reduce_blanks       # trim blanks
 setopt hist_verify              # show before executing history commands
-setopt inc_append_history       # add commands as they are typed, dont wait until shell exit 
+setopt inc_append_history       # add commands as they are typed, dont wait until shell exit
 setopt share_history            # share hist between sessions
 setopt bang_hist                # !keyword
 
@@ -125,4 +125,7 @@ fi
 #disable Ctrl+s Ctrl+q Software Flow Control for vim
 stty -ixon
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

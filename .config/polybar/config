@@ -14,8 +14,8 @@ background = #2a2a2e
 background-alt = #cc6666
 background-opaque = #222222
 #foreground = #dfdfdf
-foreground = #FFAB40
-foreground-alt = #455A64
+foreground = #eff0eb
+foreground-alt = #57C7FF
 foreground-disconnect = #66ffffff
 
 primary = #ff9400
@@ -23,10 +23,10 @@ secondary = #33691E
 alert = #bd2c40
 
 ; colors for indicators for RAM and CPU
-best = #55aa55
-good = #557755
-nominal = #f5a70a
-degraded = #ff5555
+best = #5af78e
+good = #5af78e
+nominal = #f3f99d
+degraded = #ff5c57
 empty = #444444
 
 spotify = #6AE368
@@ -43,7 +43,8 @@ monitor = ${env:MONITOR}
 
 font-0 = "Input Mono:style=Bold:pixelsize=10;2"
 font-1 = "fixed:pixelsize=10;2"
-font-2 = "FontAwesome:pixelsize=10;2"
+font-2 = "FontAwesome5Free:style=Solid:pixelsize=10;2"
+font-3 = "FontAwesome5Brands:style=Regular:pixelsize=10;2"
 
 module-margin-left = 1
 module-margin-right = 2
@@ -68,7 +69,7 @@ padding-right = 1
 
 modules-left = vpncheck pkg
 modules-center =
-modules-right = cpu memory freespace redshift
+modules-right = cpu memory freespace
 
 ; tray options
 tray-position = right
@@ -176,7 +177,7 @@ type = internal/network
 interface = wlp1s0
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
-label-connected = %essid%   %signal%%
+label-connected =  %essid%  %signal%%
 label-connected-foreground = ${colors.foreground}
 
 label-disconnected = 
@@ -284,13 +285,13 @@ format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+bar-volume-foreground-0 = ${colors.good}
+bar-volume-foreground-1 = ${colors.good}
+bar-volume-foreground-2 = ${colors.good}
+bar-volume-foreground-3 = ${colors.good}
+bar-volume-foreground-4 = ${colors.good}
+bar-volume-foreground-5 = ${colors.nominal}
+bar-volume-foreground-6 = ${colors.degraded}
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
@@ -312,7 +313,7 @@ bar-indicator-foreground = #ff
 bar-indicator-font = 2
 bar-fill = ─
 bar-fill-font = 2
-bar-fill-foreground = #9f78e1
+bar-fill-foreground = ${colors.foreground}
 bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
@@ -328,6 +329,7 @@ card = intel_backlight
 type = internal/battery
 
 ; This is useful in case the battery never reports 100% charge
+time-format= %H:%M
 full-at = 99
 battery = BAT0
 adapter = ADP1
@@ -336,6 +338,10 @@ poll-interval = 5
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-full = <ramp-capacity> <label-full>
+
+label-discharging = %percentage%% %time%
+label-charging = %percentage%%
+label-full = %percentage%% %consumption%
 
 ; Only applies if <ramp-capacity> is used
 ramp-capacity-0 = 
@@ -404,5 +410,12 @@ exec = ~/.config/polybar/arcanist.sh
 [module/redshift]
 type = custom/script
 interval = 5
-
 exec = ~/.config/polybar/redshift.sh
+
+; KEYBOARD-SPEED
+[module/hackspeed]
+type = custom/script
+interval = 20
+tail = true
+exec = ~/.config/polybar/info-hackspeed.sh
+format-prefix=" "

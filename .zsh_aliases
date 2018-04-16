@@ -1,8 +1,6 @@
 alias ll='ls -lh --color=auto'
-#alias ll='exa -bghHlS'
 alias la='ls -lha --color=auto'
-#alias la='exa -bghHlSa'
-alias update='pacaur -Syu'
+alias update='yay -Syu'
 alias wireless-on='sudo ip link set wlp1s0 up'
 alias wireless-off='sudo ip link set wlp1s0 down'
 alias workspace='cd /home/phil/workspace/'
@@ -26,3 +24,10 @@ alias pacclean='paccache --remove --keep 1 --verbose'
 alias battery="upower -i `upower -e | grep 'BAT'`"
 alias off='systemctl poweroff'
 alias timestamp='date +%s%3N'
+#always create paths with directories
+alias mkdir='mkdir -p'
+#task tracking sprints
+alias week='timew week rc.reports.week.lines=5'
+alias day='timew day rc.reports.day.lines=5'
+#alias less='/usr/share/vim/vim80/macros/less.sh'
+alias rm='timeout 3 rm -Iv --one-file-system'

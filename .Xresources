@@ -1,7 +1,7 @@
 !urxvt config
 URxvt.saveLines: 1000
 URxvt.scrollBar: false
-URxvt.foreground: white
+!URxvt.foreground: white
 URxvt.secondaryScroll: true
 URxvt.font: xft:Input Mono Narrow:pixelsize=13
 URxvt.perl-ext: default,matcher
@@ -18,7 +18,7 @@ URxvt.tabbed.font: xft:Input Mono Narrow:pixelsize=13
 URxvt.keysym.Control-Left:    \033[1;5D
 URxvt.keysym.Control-Right:    \033[1;5C
 URxvt.depth: 32
-URxvt.background: rgba:0000/0000/0200/c800
+!URxvt.background: rgba:0000/0000/0200/c800
 
 !smaller cursor
 Xcursor.size: 16
@@ -27,10 +27,11 @@ Xcursor.size: 16
 ! ROFI Color theme
 ! ------------------------------------------------------------------------------
 rofi.color-enabled: true
-rofi.color-window: #1d1f21, #81a2be, #1d1f21
-rofi.color-normal: #373b41, #969896, #282a2e, #969896, #373b41
-rofi.color-active: #373b41, #de935f, #282a2e, #de935f, #373b41
-rofi.color-urgent: #373b41, #cc6666, #282a2e, #cc6666, #373b41
+!background, box, dotted line above results
+rofi.color-window: #282a36, #eff0eb, #57c7ff
+rofi.color-normal: #373b41, #57c7ff, #282a2e, #57c7ff, #373b41
+rofi.color-active: #373b41, #f3f99d, #282a2e, #f3f99d, #373b41
+rofi.color-urgent: #373b41, #ff5c57, #282a2e, #ff5c57, #373b41
 
 ! ------------------------------------------------------------------------------
 ! PRETTY FONTS
@@ -51,29 +52,40 @@ Xft.lcdfilter: lcddefault
 Rxvt.modifier: alt
 
 !-------------------------------------------------------------------------------
-! MATERIAL DESIGN COLORS
+!  SNAZZY COLORS
 !-------------------------------------------------------------------------------
-! black
-*color0  			: #263238
-*color8  			: #37474f
-! red
-*color1  			: #ff9800
-*color9  			: #ffa74d
-! green
-*color2  			: #8bc34a
-*color10 			: #9ccc65
-! yellow
-*color3  			: #ffc107
-*color11 			: #ffa000
-! blue
-*color4  			: #03a9f4
-*color12 			: #81d4fa
-! magenta
-*color5  			: #e91e63
-*color13 			: #ad1457
-! cyan
-*color6  			: #009688
-*color14 			: #26a69a
-! white
-*color7  			: #cfd8dc
-*color15 			: #eceff1
+URxvt*foreground: #eff0eb
+URxvt*background: #282a36
+URxvt*cursorColor: #97979b
+
+! Black + DarkGrey
+URxvt*color0: #282a36
+URxvt*color8: #686868
+
+! DarkRed + Red
+URxvt*color1: #ff5c57
+URxvt*color9: #ff5c57
+
+! DarkGreen + Green
+URxvt*color2: #5af78e
+URxvt*color10:#5af78e
+
+! DarkYellow + Yellow
+URxvt*color3: #f3f99d
+URxvt*color11:#f3f99d
+
+! DarkBlue + Blue
+URxvt*color4: #57c7ff
+URxvt*color12:#57c7ff
+
+! DarkMagenta + Magenta
+URxvt*color5: #ff6ac1
+URxvt*color13:#ff6ac1
+
+! DarkCyan + Cyan (both not tango)
+URxvt*color6: #9aedfe
+URxvt*color14:#9aedfe
+
+! LightGrey + White
+URxvt*color7: #eff0eb
+URxvt*color15:#f1f1f0
