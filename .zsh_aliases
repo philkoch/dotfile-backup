@@ -15,10 +15,10 @@ alias mci='mvn clean install'
 alias logstash='/usr/share/logstash/bin/logstash'
 alias starwars='telnet towel.blinkenlights.nl'
 alias vpn='sudo openvpn ~/Tools/openvpn/koch_p.ovpn'
-alias mysqlLive='mysql -uhorreum -p -h192.168.0.51 pam'
+alias mysqlLive='mysql -uhorreum64 -p -h192.168.0.51 pam'
 alias mysqlTest='mysql -upam -p -htest-horreum.prime-research.local pam'
 #optimizes pacmans database
-alias pacoptimize='pacman-optimize'
+alias pacoptimize='sudo pacman-optimize'
 #removes old packages from pacmans cache, keeps the latest
 alias pacclean='paccache --remove --keep 1 --verbose'
 alias battery="upower -i `upower -e | grep 'BAT'`"

@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Input Sans 10
+font pango:Anonymous Pro 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -43,7 +43,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -font "Anonymous Pro 12" -show run
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -192,7 +192,7 @@ exec --no-startup-id "devmon --no-gui"
 #polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #wallpaper
-exec --no-startup-id "feh --bg-max ~/private/lnxpcs/cards/black/root-card-black.png"
+exec --no-startup-id "feh --bg-max ~/scripts/system/smooth-distro-1920x1080.png"
 #dunst notifications
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 #compton
