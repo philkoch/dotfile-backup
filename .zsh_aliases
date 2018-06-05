@@ -31,3 +31,29 @@ alias week='timew week rc.reports.week.lines=5'
 alias day='timew day rc.reports.day.lines=5'
 #alias less='/usr/share/vim/vim80/macros/less.sh'
 alias rm='timeout 3 rm -Iv --one-file-system'
+alias snapshot='grep "SNAPSHOT" pom.xml'
+alias fly-migrate='mvn flyway:migrate -Dflyway.user=root -Dflyway.password=mysq1Pw -Dflyway.locations=filesystem:src/main/resources/db/migration'
+alias fly-repair='mvn flyway:repair -Dflyway.user=root -Dflyway.password=mysq1Pw -Dflyway.locations=filesystem:src/main/resources/db/migration'
+
+###########################
+#    F U N C T I O N S    #
+###########################
+
+
+#in git-repos you can restore a file that was deleted some commits ago
+function restore-file(){
+    git checkout $(git rev-list -n 1 HEAD -- "$1")~1 -- "$1"
+}
+
+
+
+
+function functions(){
+    RED='\033[0;31m';
+    NO_COLOR='\033[0m';
+    GREEN='\033[0;32m';
+    BLUE='\033[0;34m';
+    echo
+    echo -e "///   ZSH-functions:";
+    echo -e "${BLUE}restore-file \$filename ${NO_COLOR} ==> ${GREEN}restores a file in git-repos that was deleted some commits ago"
+}

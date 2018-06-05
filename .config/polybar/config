@@ -167,7 +167,7 @@ type = internal/network
 interface = enp0s31f6
 label-connected =  %local_ip%
 label-connected-foreground = ${colors.foreground}
-label-disconnected = 
+label-disconnected =
 ;: 
 label-disconnected-foreground = ${colors.foreground-disconnect}
 
@@ -180,7 +180,7 @@ format-disconnected = <label-disconnected>
 label-connected =  %essid%  %signal%%
 label-connected-foreground = ${colors.foreground}
 
-label-disconnected = 
+label-disconnected =
 ;: 
 label-disconnected-foreground = ${colors.foreground-disconnect}
 
@@ -191,13 +191,13 @@ interval = 2
 format = <label><ramp-coreload>
 format-prefix = "CPU "
 format-prefix-foreground = ${colors.foreground}
-label = 
+label =
 
 ramp-coreload-font = 1
 ramp-coreload-0 = ▁
 ramp-coreload-0-foreground = ${colors.best}
 ramp-coreload-1 = ▂
-ramp-coreload-1-foreground = ${colors.best} 
+ramp-coreload-1-foreground = ${colors.best}
 ramp-coreload-2 = ▃
 ramp-coreload-2-foreground = ${colors.good}
 ramp-coreload-3 = ▄
@@ -281,7 +281,7 @@ label-volume = 
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
+format-muted-foreground = ${colors.degraded}
 label-muted = sound muted
 
 bar-volume-width = 10

@@ -175,7 +175,7 @@ bindcode $mod+96 exec $HOME/.config/dunst/brightness up
 # i3lock computer (mod + Delete)
 #bindcode $mod+119 exec i3lock -c 000000
 # i3fancylock (mod+ Delete)
-bindcode $mod+119 exec $HOME/.config/i3/i3lock-fancy-multimonitor/lock
+bindcode $mod+119 exec "$HOME/.config/i3/i3lock-fancy-multimonitor/lock -p -n"
 
 # no automatic activation of windows on mouse-over
 focus_follows_mouse no
@@ -214,3 +214,5 @@ for_window [class="Vivaldi-stable" title="Calendar"] floating enable
 for_window [class="Nightly" title="Library"] floating enable
 for_window [class="Nightly" title="Applications - Nightly"] floating enable
 
+#IntelliJ
+for_window [class="^jetbrains-.+"][window_type=dialog] focus
