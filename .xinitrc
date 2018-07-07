@@ -16,5 +16,8 @@ if [ -f /home/phil/.synaptics_conf ]; then
     source /home/phil/.synaptics_conf
 fi
 
+#persisten color-scheme
+wal -R
+
 #start i3
 exec i3

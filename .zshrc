@@ -129,3 +129,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/home/phil/Tools/Sencha/Cmd:$PATH"
+
+#pywal theme
+#(cat ~/.cache/wal/sequences &)
+

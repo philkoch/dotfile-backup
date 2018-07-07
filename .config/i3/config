@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Anonymous Pro 12
+font pango:Tamzen-16
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -182,9 +182,18 @@ focus_follows_mouse no
 # remove edges when only one window is on workspace
 hide_edge_borders smart
 
-#change colors
-#client.focused   #263238 #263238 #57C7FF #263238 #263238
-client.focused   #57C7FF #57C7FF #0c0c0d #57C7FF #57C7FF
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color14 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
 
 ####start applications:
 #USB mounting
@@ -192,11 +201,16 @@ exec --no-startup-id "devmon --no-gui"
 #polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #wallpaper
-exec --no-startup-id "feh --bg-max ~/scripts/system/smooth-distro-1920x1080.png"
+#exec --no-startup-id "feh --bg-max ~/scripts/system/smooth-distro-1920x1080.png"
+exec --no-startup-id "feh --bg-max $WALLPAPER"
 #dunst notifications
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 #compton
 exec --no-startup-id compton
+
+#gaps
+gaps outer 15
+gaps inner 15
 
 #start applications on specific workspaces
 assign [class="Vivaldi-stable"] 2
@@ -215,4 +229,8 @@ for_window [class="Nightly" title="Library"] floating enable
 for_window [class="Nightly" title="Applications - Nightly"] floating enable
 
 #IntelliJ
-for_window [class="^jetbrains-.+"][window_type=dialog] focus
+for_window [class="^jetbrains-.+"] no_focus
+#for_window [class="^jetbrains-.+"][window_type=dialog] focus
+
+for_window [class="^.*"] border pixel 2
+

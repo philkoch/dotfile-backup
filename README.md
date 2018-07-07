@@ -6,7 +6,6 @@ Contains my dotfiles for various applications
 * polybar
 * zsh
 * git
-* phabricator(only login information)
 * X
 * dunst
 * redshift

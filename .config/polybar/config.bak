@@ -9,14 +9,18 @@
 
 
 [colors]
-background = ${xrdb:color0:#222}
-foreground = ${xrdb:color7:#222}
-foreground-alt = ${xrdb:color0:#222}
-primary = ${xrdb:color1:#222}
-secondary = ${xrdb:color2:#222}
-alert = ${xrdb:color3:#222}
-background-opaque = #222222
 
+background = #2a2a2e
+background-alt = #cc6666
+background-opaque = #222222
+#foreground = #dfdfdf
+foreground = #eff0eb
+foreground-alt = #57C7FF
+foreground-disconnect = #66ffffff
+
+primary = #ff9400
+secondary = #33691E
+alert = #bd2c40
 
 ; colors for indicators for RAM and CPU
 best = #5af78e
@@ -37,7 +41,7 @@ spotify = #6AE368
 ;${env:MONITOR} to display polybar on all monitors
 monitor = ${env:MONITOR}
 
-font-0 = "Tamzen-20:style=Bold:pixelsize=20;2"
+font-0 = "Anonymous Pro:style=Bold:pixelsize=12;2"
 font-1 = "fixed:pixelsize=10;2"
 font-2 = "FontAwesome5Free:style=Solid:pixelsize=10;2"
 font-3 = "FontAwesome5Brands:style=Regular:pixelsize=10;2"
@@ -46,58 +50,53 @@ module-margin-left = 1
 module-margin-right = 2
 
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-;      C L O C K - A N D - D A T E
+;      B O T T O M  -  B A R
 ;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-[bar/clock-date]
+[bar/bottomBar]
 ;bottom bar contains CPU, RAM, disk indicators and tray
 ;the bar is located in the bottom right
 inherit = bar/parent
 
-width = 98%
+width = 100%
 height = 20
-offset-x = 1%
-offset-y = 5
-background = ${colors.background}
-foreground = ${colors.foreground}
-bottom = false
-
-padding-right = 1
-
-modules-left = spotify vpncheck
-modules-center = time
-modules-right = wireless-network wired-network volume battery date xkeyboard
-
-; tray options
-tray-position = right
-tray-padding = 5
-
-override-redirect = true
-wm-restack = i3
-
-;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-;      W O R K S P A C E S
-;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-[bar/workspaces]
-;the bar is located in the bottom right
-inherit = bar/parent
-
-width = 330
-height = 20
-offset-x = 41%
-offset-y = 5
+offset-x = 0
+offset-y = 0
 background = ${colors.background}
 foreground = ${colors.foreground}
 bottom = true
 
+padding-right = 1
 
-padding-right = 0
+modules-left = vpncheck pkg
+modules-center =
+modules-right = cpu memory freespace
 
-modules-left =
-modules-center = i3
-modules-right =
+; tray options
+tray-position = right
+tray-padding = 2
 
-override-redirect = true
-wm-restack = i3
+;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;         T O P  -  B A R
+;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[bar/topBar]
+;top bar contains workspace view, spotify, network, volume, battery, date, time and keyboard-layout
+;the bar uses the screen width
+inherit = bar/parent
+
+width = 100%
+height = 20
+offset-x = 0
+offset-y = 0
+background = ${colors.background}
+foreground = ${colors.foreground}
+bottom = false
+
+modules-left = i3 spotify
+modules-center = time
+modules-right = wired-network wireless-network battery xbacklight volume date xkeyboard
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 [settings]
 screenchange-reload = true
@@ -122,7 +121,7 @@ interval = 25
 mount-0 = /
 format-prefix = " "
 label-mounted =  %free%
-label-unmounted-foreground = ${colors.alert}
+label-unmounted-foreground = ${colors.foreground-disconnect}
 
 ; i3wm
 [module/i3]
@@ -137,25 +136,19 @@ label-mode-padding = 1
 label-mode-foreground = #000
 label-mode-background = ${colors.foreground-alt}
 
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-;   %output%
-label-focused = %name%
-label-focused-foreground = ${colors.background}
-label-focused-background = ${colors.foreground}
-label-focused-underline = ${colors.foreground}
+label-focused = %icon%
+label-focused-background = ${colors.foreground-alt}
+label-focused-underline = ${colors.foreground-alt}
 label-focused-padding = 1
 
-label-unfocused = %name%
+label-unfocused = %icon%
 label-unfocused-padding = 1
 
-label-urgent = %name%
+label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
-label-visible = %name%
+label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
@@ -168,7 +161,6 @@ ws-icon-4 = 5;
 ws-icon-5 = 6;
 ws-icon-default = 
 
-override_redirect = true
 ; NETWORK
 [module/wired-network]
 type = internal/network
@@ -177,7 +169,7 @@ label-connected =  %local_ip%
 label-connected-foreground = ${colors.foreground}
 label-disconnected =
 ;: 
-label-disconnected-foreground = ${colors.alert}
+label-disconnected-foreground = ${colors.foreground-disconnect}
 
 ; WIRELESS
 [module/wireless-network]
@@ -185,12 +177,12 @@ type = internal/network
 interface = wlp1s0
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
-label-connected = 
+label-connected =  %essid%  %signal%%
 label-connected-foreground = ${colors.foreground}
 
 label-disconnected =
 ;: 
-label-disconnected-foreground = ${colors.alert}
+label-disconnected-foreground = ${colors.foreground-disconnect}
 
 ; CPU
 [module/cpu]
@@ -244,26 +236,26 @@ bar-used-empty-foreground = ${colors.empty}
 type = internal/date
 interval = 30
 
-date = %d.%m
+date = %A, %d.%m.%y
 date-alt = ${self.date}
 
 time = %H:%M
 time-alt = ${self.time}
 
-label =  %time%
+label = %time%
 
 ; DATE
 [module/date]
 type = internal/date
 interval = 30
 
-date = %d.%m
+date = %a, %d.%m.%y
 date-alt = ${self.date}
 
 time = %H:%M
 time-alt = ${self.time}
 
-label =  %date%
+label = %date%
 
 
 ; VOLUME
@@ -274,7 +266,7 @@ label =  %date%
 ;label-volume-foreground = ${root.foreground}
 ;
 ;format-muted = <label-muted>
-;label-muted = mute
+;label-muted = muted
 ;label-muted-foreground = ${colors.degraded}
 ;
 ;ramp-volume-0 = 
@@ -284,14 +276,13 @@ label =  %date%
 [module/volume]
 type = internal/volume
 
-;format-volume = <label-volume> <bar-volume>
-format-volume = <label-volume>
+format-volume = <label-volume> <bar-volume>
 label-volume = 
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
+format-muted-prefix = " "
 format-muted-foreground = ${colors.degraded}
-label-muted = " "
+label-muted = sound muted
 
 bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.good}
@@ -350,7 +341,7 @@ format-full = <ramp-capacity> <label-full>
 
 label-discharging = %percentage%% %time%
 label-charging = %percentage%%
-label-full = %percentage%%
+label-full = %percentage%% %consumption%
 
 ; Only applies if <ramp-capacity> is used
 ramp-capacity-0 = 
@@ -389,8 +380,8 @@ format-prefix-foreground = ${colors.foreground}
 type = custom/script
 exec = pgrep openvpn
 interval = 5
-label = " " 
-format-prefix = " "
+label = vpn connected
+format-prefix = " "
 format-prefix-foreground = ${colors.good}
 
 ; ARCH PKG

@@ -153,26 +153,11 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'scrooloose/nerdtree'
 "lightline
 Plug 'itchyny/lightline.vim'
-"Challenger Deep Theme
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-"Colorschemes
-Plug 'flazz/vim-colorschemes'
 
+Plug 'dylanaraps/wal.vim'
 
 " Initialize plugin system
 call plug#end()
-
-
-"------------------------------------------------------------
-"Challenger Deep Theme
-"if has('nvim') || has('termguicolors')
-"  set termguicolors
-"endif
-
-"colorscheme challenger_deep
-"colorscheme molokai
-"also in lightline
-let g:lightline = { 'colorscheme': 'challenger_deep'}
 
 
 "------------------------------------------------------------
@@ -221,7 +206,7 @@ nmap \q :nohlsearch<CR>
 " \w removes trailing whitespaces
 nmap \w :%s/\s\+$//e<CR>
 
-set cursorcolumn                        " highlight cursor column
+" set cursorcolumn                        " highlight cursor column
 set cursorline                          " highlight cursor row
 
 match ErrorMsg '\%>120v.\+'             " Highlight lines that are too long
