@@ -33,7 +33,9 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+
+bindsym $mod+Shift+q [con_id="__focused__" instance="^(?!dropdown).*$"] kill
+#bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
@@ -44,6 +46,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec rofi -font "Anonymous Pro 12" -show run
+#
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -135,12 +138,12 @@ mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
+        # Pressing down will grow the window’s height.
         bindsym j resize grow height 10 px or 10 ppt
+        # Pressing up will shrink the window’s height.
         bindsym k resize shrink height 10 px or 10 ppt
+        # Pressing right will grow the window’s width.
         bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
@@ -154,6 +157,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+#resize windows
 bindsym $mod+r mode "resize"
 
 #volume control (multimedia keys)
@@ -167,18 +171,17 @@ bindsym Print exec $HOME/scripts/system/volume.sh down
 bindsym Pause exec $HOME/scripts/system/volume.sh mute
 
 # brightness control (mod + F11 or mod + F12)
-#bindcode $mod+95 exec xbacklight - 10
-#bindcode $mod+96 exec xbacklight + 10
-bindcode $mod+95 exec $HOME/.config/dunst/brightness down
-bindcode $mod+96 exec $HOME/.config/dunst/brightness up
+bindcode $mod+95 exec xbacklight - 10
+bindcode $mod+96 exec xbacklight + 10
+#bindcode $mod+95 exec $HOME/.config/dunst/brightness down
+#bindcode $mod+96 exec $HOME/.config/dunst/brightness up
 
-# i3lock computer (mod + Delete)
-#bindcode $mod+119 exec i3lock -c 000000
 # i3fancylock (mod+ Delete)
 bindcode $mod+119 exec "$HOME/.config/i3/i3lock-fancy-multimonitor/lock -p -n"
 
 # no automatic activation of windows on mouse-over
 focus_follows_mouse no
+
 # remove edges when only one window is on workspace
 hide_edge_borders smart
 
@@ -192,19 +195,33 @@ set_from_resource $bg i3wm.color14 #f0f0f0
 
 # class                 border  backgr. text indicator child_border
 client.focused          $bg     $bg     $fg  $bg       $bg
-
 client.background       $bg
 
+#### scratchpad
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] resize set 625 400
+for_window [instance="dropdown"] move scratchpad
+for_window [instance="dropdown"] border pixel 5
+
+exec --no-startup-id urxvt -name dropdown
+
+bindsym $mod+u [instance="dropdown"] scratchpad show, [instance="dropdown"] move position center
+
+
 ####start applications:
+
 #USB mounting
 exec --no-startup-id "devmon --no-gui"
+
 #polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 #wallpaper
-#exec --no-startup-id "feh --bg-max ~/scripts/system/smooth-distro-1920x1080.png"
 exec --no-startup-id "feh --bg-max $WALLPAPER"
+
 #dunst notifications
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
+
 #compton
 exec --no-startup-id compton
 
@@ -221,16 +238,18 @@ assign [class="jetbrains-idea"] 3
 assign [class="Keepassx2"] 4
 
 #floating windows for some applications
+
 #vivaldi settings
 for_window [class="Vivaldi-stable" title="Startup Settings"] floating enable
 for_window [class="Vivaldi-stable" title="Calendar"] floating enable
+
 #firefox settings
 for_window [class="Nightly" title="Library"] floating enable
 for_window [class="Nightly" title="Applications - Nightly"] floating enable
 
 #IntelliJ
 for_window [class="^jetbrains-.+"] no_focus
-#for_window [class="^jetbrains-.+"][window_type=dialog] focus
+for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
 for_window [class="^.*"] border pixel 2
 

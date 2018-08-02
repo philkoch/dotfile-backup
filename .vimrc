@@ -205,6 +205,8 @@ set smartcase                           "
 nmap \q :nohlsearch<CR>
 " \w removes trailing whitespaces
 nmap \w :%s/\s\+$//e<CR>
+" \m convert remarkup to markdown
+nmap \m :%s/^=== /#### /ge <bar> :%s/ ===$/ ####/ge <bar> :%s/^== /## /ge <bar> :%s/ ==$/ ##/ge<CR>
 
 " set cursorcolumn                        " highlight cursor column
 set cursorline                          " highlight cursor row

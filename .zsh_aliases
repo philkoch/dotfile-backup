@@ -15,6 +15,7 @@ alias mci='mvn clean install'
 alias logstash='/usr/share/logstash/bin/logstash'
 alias starwars='telnet towel.blinkenlights.nl'
 alias vpn='sudo openvpn ~/Tools/openvpn/koch_p.ovpn'
+alias cision-vpn='sudo openconnect primevpn.cision.com'
 alias mysqlLive='mysql -uhorreum64 -p -h192.168.0.51 pam'
 alias mysqlTest='mysql -upam -p -htest-horreum.prime-research.local pam'
 #optimizes pacmans database
@@ -52,6 +53,15 @@ function restore-file(){
 }
 
 
+#pushes a existing git-repo to BitBucket
+#!! THE REPOSITORY NEEDS TO BE CREATED AT BITBUCKET FIRST!!
+function bitbucket-push(){
+    git remote set-url origin ssh://koch_p@git.qwestcolo.local:7999/$1/$2.git
+    git push -u origin --all
+    git push origin --tags
+}
+
+
 
 
 function functions(){
@@ -62,4 +72,5 @@ function functions(){
     echo
     echo -e "///   ZSH-functions:";
     echo -e "${BLUE}restore-file \$filename ${NO_COLOR} ==> ${GREEN}restores a file in git-repos that was deleted some commits ago"
+    echo -e "${BLUE}bitbucket-push \$filename ${NO_COLOR} ==> ${GREEN}pushes an existing git-repo to BitBucket. The repository has to be created at BitBucket first!!"
 }

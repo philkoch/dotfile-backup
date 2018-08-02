@@ -16,7 +16,7 @@ export PATH="$PATH:/home/phil/.config/yarn/global/node_modules/.bin/"
 
 export TW_TOKEN="81fbda05-05ae-4a35-b912-e62ef9a5b232_3qDZgv7QQ7ynKBuUvpCdMuAn.zH8dcEBrN2tkpD.Mp3Ss0e9vM833k80FIjcPnOTTM7LXFBpjkh-F-0Y2M5KVO5rNeraImMeTcbeioBz94mH1GVLku0PR995sRrw-a8reZsejzcBjepfcme2FN2R63shU8tzUtyDyyMr7iTOuz8"
 
-export WALLPAPER="~/Pictures/wallpapers/Abstract-Minimalist-Art-Hipster-www.wallpapersbrowse.com.jpg"
+export WALLPAPER="/home/phil/Pictures/wallpapers/Abstract-Minimalist-Art-Hipster-www.wallpapersbrowse.com.jpg"
 
 # X S E R V E R
 startx
