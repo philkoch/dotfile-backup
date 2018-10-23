@@ -155,6 +155,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 
 Plug 'dylanaraps/wal.vim'
+" fugitive git plugin
+Plug 'tpope/vim-fugitive'
 
 " Initialize plugin system
 call plug#end()
@@ -207,6 +209,8 @@ nmap \q :nohlsearch<CR>
 nmap \w :%s/\s\+$//e<CR>
 " \m convert remarkup to markdown
 nmap \m :%s/^=== /#### /ge <bar> :%s/ ===$/ ####/ge <bar> :%s/^== /## /ge <bar> :%s/ ==$/ ##/ge<CR>
+" \j formats JSON
+nmap \j :%!python -m json.tool<CR>
 
 " set cursorcolumn                        " highlight cursor column
 set cursorline                          " highlight cursor row

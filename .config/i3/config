@@ -222,6 +222,9 @@ exec --no-startup-id "feh --bg-max $WALLPAPER"
 #dunst notifications
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 
+#xflux for Mainz
+exec --no-startup-id xflux -l 49.9999952 -g 8.2710237
+
 #compton
 exec --no-startup-id compton
 
@@ -235,7 +238,7 @@ assign [class="Firefox"] 2
 assign [class="Nightly"] 2
 assign [class="Pidgin"] 6
 assign [class="jetbrains-idea"] 3
-assign [class="Keepassx2"] 4
+assign [class="keepassxc"] 4
 
 #floating windows for some applications
 

@@ -3,13 +3,17 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 #emacs keybindings
-bindkey -e
+bindkey -v
 #make delete key stop printing ~
 bindkey    "^[[3~"          delete-char
 bindkey    "^[3;5~"         delete-char
 #move words with arrows
 bindkey ';5C' forward-word
 bindkey ';5D' backward-word
+
+#open vim to edit the shell command
+autoload -z edit-command-line;zle -N edit-command-line
+bindkey -M vicmd ' ' edit-command-line
 
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -48,6 +52,7 @@ setopt always_to_end            # when completing from the middle of a word, mov
 setopt complete_in_word         # allow completion from within a word/phrase
 setopt correct                  # spelling correction for commands
 setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
+setopt autocd autopushd         # keep track of visited directories
 
 zstyle ':completion::complete:*' use-cache on               # completion caching, use rehash to clear
 zstyle ':completion:*' cache-path ~/.zsh/cache              # cache path
@@ -134,3 +139,4 @@ export PATH="/home/phil/Tools/Sencha/Cmd:$PATH"
 #pywal theme
 #(cat ~/.cache/wal/sequences &)
 
+export PATH="/opt/Sencha/Cmd:$PATH"

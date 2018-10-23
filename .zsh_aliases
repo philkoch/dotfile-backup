@@ -4,6 +4,7 @@ alias update='yay -Syu'
 alias wireless-on='sudo ip link set wlp1s0 up'
 alias wireless-off='sudo ip link set wlp1s0 down'
 alias workspace='cd /home/phil/Development/java'
+alias horreum='cd /opt/prime/horreum-web'
 alias sudo='sudo '
 alias ssh='TERM=xterm ssh'
 alias top='htop'
@@ -18,6 +19,10 @@ alias vpn='sudo openvpn ~/Tools/openvpn/koch_p.ovpn'
 alias cision-vpn='sudo openconnect primevpn.cision.com'
 alias mysqlLive='mysql -uhorreum64 -p -h192.168.0.51 pam'
 alias mysqlTest='mysql -upam -p -htest-horreum.prime-research.local pam'
+#notification for long running commands
+alias alert='notify-send --urgency=low "command finished"'
+#-i "$([ $? = 0 ] && echo terminal || echo error)"'
+
 #optimizes pacmans database
 alias pacoptimize='sudo pacman-optimize'
 #removes old packages from pacmans cache, keeps the latest
@@ -41,6 +46,37 @@ alias start='systemctl start'
 alias stop='systemctl stop'
 alias status='systemctl status'
 alias restart='systemctl restart'
+#translate english-german
+alias teg='trans en:de '
+alias tge='trans de:en '
+#sencha command
+alias swatch='sencha app watch'
+alias sbuild='sench app build'
+
+#fast directory switching >> https://opensource.com/article/18/9/tips-productivity-zsh
+alias d='dirs -v | head -10'
+alias 1='cd -'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias 5='cd -5'
+alias 6='cd -6'
+alias 7='cd -7'
+alias 8='cd -8'
+alias 9='cd -9'
+
+#internet speedtest
+alias speed='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -'
+#remote desktop prime
+alias remotedesk='rdesktop -g 1920x1080 -P -z -x l -r sound:off -u koch_p 10.249.0.6'
+
+#file-associations
+alias -s {xml,yaml,properties,json}=vim
+
+
+#spring-dataflow
+alias sdserver='java -jar /home/phil/Development/java/spring-dataflow-workshop/spring-cloud-dataflow-server-local-1.6.3.RELEASE.jar'
+alias sdshell='java -jar /home/phil/Development/java/spring-dataflow-workshop/spring-cloud-dataflow-shell-1.6.3.RELEASE.jar'
 
 ###########################
 #    F U N C T I O N S    #
