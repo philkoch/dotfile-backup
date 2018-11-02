@@ -3,7 +3,9 @@ alias la='ls -lha --color=auto'
 alias update='yay -Syu'
 alias wireless-on='sudo ip link set wlp1s0 up'
 alias wireless-off='sudo ip link set wlp1s0 down'
+alias ssid='iw dev wlp1s0 link | grep SSID | awk "{print \$NF}"'
 alias workspace='cd /home/phil/Development/java'
+alias spring='cd /home/phil/Development/spring-dataflow'
 alias horreum='cd /opt/prime/horreum-web'
 alias sudo='sudo '
 alias ssh='TERM=xterm ssh'
@@ -73,10 +75,12 @@ alias remotedesk='rdesktop -g 1920x1080 -P -z -x l -r sound:off -u koch_p 10.249
 #file-associations
 alias -s {xml,yaml,properties,json}=vim
 
-
 #spring-dataflow
 alias sdserver='java -jar /home/phil/Development/java/spring-dataflow-workshop/spring-cloud-dataflow-server-local-1.6.3.RELEASE.jar'
 alias sdshell='java -jar /home/phil/Development/java/spring-dataflow-workshop/spring-cloud-dataflow-shell-1.6.3.RELEASE.jar'
+
+#mount sd-card
+alias mountsd='udevil mount /dev/mmcblk0p1 /media/sd-card'
 
 ###########################
 #    F U N C T I O N S    #
