@@ -1,5 +1,6 @@
 #ENVIRONMENT VARIABLES
-BROWSER=/usr/bin/firefox-nightly
+#BROWSER=/usr/bin/firefox-nightly
+BROWSER=/usr/bin/qutebrowser
 #set editor variables for sudo use
 EDITOR=vim
 VISUAL=$EDITOR
@@ -17,6 +18,9 @@ export PATH="$PATH:/home/phil/.config/yarn/global/node_modules/.bin/"
 export TW_TOKEN="81fbda05-05ae-4a35-b912-e62ef9a5b232_3qDZgv7QQ7ynKBuUvpCdMuAn.zH8dcEBrN2tkpD.Mp3Ss0e9vM833k80FIjcPnOTTM7LXFBpjkh-F-0Y2M5KVO5rNeraImMeTcbeioBz94mH1GVLku0PR995sRrw-a8reZsejzcBjepfcme2FN2R63shU8tzUtyDyyMr7iTOuz8"
 
 export WALLPAPER="/home/phil/Pictures/wallpapers/Abstract-Minimalist-Art-Hipster-www.wallpapersbrowse.com.jpg"
+
+#add custom scripts folder to path
+export PATH="$PATH:/home/phil/scripts/system/"
 
 # X S E R V E R
 startx

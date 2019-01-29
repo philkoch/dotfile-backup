@@ -140,3 +140,6 @@ export PATH="/home/phil/Tools/Sencha/Cmd:$PATH"
 #(cat ~/.cache/wal/sequences &)
 
 export PATH="/opt/Sencha/Cmd:$PATH"
+
+#Vim XML lint formatting spaces
+export XMLLINT_INDENT="    "

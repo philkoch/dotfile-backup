@@ -164,6 +164,9 @@ bindsym $mod+r mode "resize"
 bindsym XF86AudioRaiseVolume exec $HOME/scripts/system/volume.sh up
 bindsym XF86AudioLowerVolume exec $HOME/scripts/system/volume.sh down
 bindsym XF86AudioMute exec $HOME/scripts/system/volume.sh mute
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 #for keyboards without media keys
 bindsym Scroll_Lock exec $HOME/scripts/system/volume.sh up
@@ -236,9 +239,12 @@ gaps inner 15
 assign [class="Vivaldi-stable"] 2
 assign [class="Firefox"] 2
 assign [class="Nightly"] 2
+assign [class="qutebrowser"] 2
 assign [class="Pidgin"] 6
 assign [class="jetbrains-idea"] 3
 assign [class="keepassxc"] 4
+assign [class="Spotify"] 6
+assign [class="Slack"] 6
 
 #floating windows for some applications
 

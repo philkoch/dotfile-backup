@@ -12,11 +12,14 @@ alias ssh='TERM=xterm ssh'
 alias top='htop'
 alias svim='sudoedit '
 alias wiki='vim /home/phil/vimwiki/index.wiki'
+alias slack='slack --disable-gpu'
 alias history='history 0'
 alias runs='ps -ef | grep'
 alias mci='mvn clean install'
+alias mgs='mvn generate-sources'
 alias logstash='/usr/share/logstash/bin/logstash'
 alias starwars='telnet towel.blinkenlights.nl'
+alias kernelv='uname -r'
 alias vpn='sudo openvpn ~/Tools/openvpn/koch_p.ovpn'
 alias cision-vpn='sudo openconnect primevpn.cision.com'
 alias mysqlLive='mysql -uhorreum64 -p -h192.168.0.51 pam'
@@ -24,6 +27,8 @@ alias mysqlTest='mysql -upam -p -htest-horreum.prime-research.local pam'
 #notification for long running commands
 alias alert='notify-send --urgency=low "command finished"'
 #-i "$([ $? = 0 ] && echo terminal || echo error)"'
+#CPU utilization
+alias cpu='cpupower frequency-set -g'
 
 #optimizes pacmans database
 alias pacoptimize='sudo pacman-optimize'
@@ -54,6 +59,8 @@ alias tge='trans de:en '
 #sencha command
 alias swatch='sencha app watch'
 alias sbuild='sench app build'
+#docker
+alias docker-clean='docker rmi $(docker images | grep "^<none>" | awk "{print \$3}")'
 
 #fast directory switching >> https://opensource.com/article/18/9/tips-productivity-zsh
 alias d='dirs -v | head -10'
@@ -101,7 +108,24 @@ function bitbucket-push(){
     git push origin --tags
 }
 
+#pushes a existing git-repo to GitHub
+#!! THE REPOSITORY NEEDS TO BE CREATED AT GITHUB FIRST!!
+function github-push(){
+    git remote set-url origin git@github.com:primedotcom/$1.git
+    git push -u origin --all
+    git push origin --tags
+}
 
+#colored man-pages
+#man() {
+#    LESS_TERMCAP_md=$'\e[01;31m' \
+#    LESS_TERMCAP_me=$'\e[0m' \
+#    LESS_TERMCAP_se=$'\e[0m' \
+#    LESS_TERMCAP_so=$'\e[01;44;33m' \
+#    LESS_TERMCAP_ue=$'\e[0m' \
+#    LESS_TERMCAP_us=$'\e[01;32m' \
+#    command man "$@"
+#}
 
 
 function functions(){
