@@ -17,6 +17,7 @@ alias history='history 0'
 alias runs='ps -ef | grep'
 alias mci='mvn clean install'
 alias mgs='mvn generate-sources'
+alias sonarize='mvn sonar:sonar -Dsonar.host.url=https://sonar.prime-intra.net -Dsonar.login="$SONARQUBE_TOKEN"'
 alias logstash='/usr/share/logstash/bin/logstash'
 alias starwars='telnet towel.blinkenlights.nl'
 alias kernelv='uname -r'
@@ -114,6 +115,16 @@ function github-push(){
     git remote set-url origin git@github.com:primedotcom/$1.git
     git push -u origin --all
     git push origin --tags
+}
+
+#pull develop branch, pulls, rebases master against develop, checks out develop again
+function dev-to-master(){
+    git checkout develop
+    git pull
+    git checkout master
+    git rebase develop
+    git push
+    git checkout develop
 }
 
 #colored man-pages
